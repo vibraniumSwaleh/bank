@@ -26,3 +26,8 @@ function reducer(state = initialState, action) {
       return state;
   }
 }
+
+const store = createStore(reducer);
+
+store.dispatch({ type: 'account/deposit', payload: 500 });
+console.log('Redux running');
