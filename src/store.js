@@ -73,7 +73,6 @@ function createCustomer(fullName, nationalID) {
     payload: { fullName, nationalID, createdAt: new Date().toISOString() },
   };
 }
-
 function updateName(fullName) {
   return { type: 'customer/updateName', payload: fullName };
 }
