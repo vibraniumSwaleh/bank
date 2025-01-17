@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deposit, payLoan, requestLoan, withdraw } from './accountSlice';
-import { updateName } from '../customers/customerSlice';
 
 function AccountOperations() {
   const [depositAmount, setDepositAmount] = useState('');
@@ -9,7 +8,6 @@ function AccountOperations() {
   const [loanAmount, setLoanAmount] = useState('');
   const [loanPurpose, setLoanPurpose] = useState('');
   const [currency, setCurrency] = useState('USD');
-  const [Name, setName] = useState('');
 
   const account = useSelector((store) => store.account);
   const {
@@ -47,11 +45,6 @@ function AccountOperations() {
   function handlePayLoan() {
     if (!currentLoan) return;
     dispatch(payLoan());
-  }
-
-  function handleUpdateName() {
-    if (!updateName) return;
-    dispatch(updateName(Name));
   }
 
   return (
@@ -115,16 +108,6 @@ function AccountOperations() {
             <button onClick={handlePayLoan}>Pay loan</button>
           </div>
         )}
-
-        <div>
-          <label>Update Name</label>
-          <input
-            type='text'
-            value={Name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <button onClick={handleUpdateName}>Update </button>
-        </div>
       </div>
     </div>
   );
